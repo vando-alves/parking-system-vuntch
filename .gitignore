@@ -1,0 +1,46 @@
+# Compilados Java
+*.class
+
+# Logs
+*.log
+
+# Diretórios do Maven
+target/
+
+# Diretórios de build
+build/
+
+# Arquivos do Eclipse
+*.classpath
+*.project
+*.settings/
+
+# Arquivos do IntelliJ
+.idea/
+*.iml
+*.iws
+out/
+
+# Arquivos do VS Code
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de teste temporários
+test-output/
+
+# Arquivos do Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Arquivos de ambiente
+.env
+
+# Arquivos de configurações pessoais
+*.swp
+*.swo
+*.bak
+
+# Arquivos gerados pelo Spring Boot
+spring.log
