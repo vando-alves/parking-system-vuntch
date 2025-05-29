@@ -1,6 +1,7 @@
 package com.vuntech.parking.entrance.service.Controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +23,11 @@ public class EntryController {
 	    @PostMapping
 	    public ResponseEntity<VehicleEntry> registerEntry(@RequestBody VehicleEntry entry) {
 	        return ResponseEntity.ok(service.register(entry));
+	    }
+	    
+	    @PostMapping("/{id}/exit")
+	    public ResponseEntity<VehicleEntry> registerExit(@PathVariable Long id) {
+	        VehicleEntry updatedEntry = service.registerExit(id);
+	        return ResponseEntity.ok(updatedEntry);
 	    }
 }

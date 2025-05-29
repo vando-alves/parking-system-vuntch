@@ -21,5 +21,8 @@ public class VehicleEntry {
 
 	    private LocalDateTime entryTime;
 
+	    private LocalDateTime exitTime;
+
+	    private Long durationInMinutes;
 	    // Getters and Setters
 }
