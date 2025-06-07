@@ -1,5 +1,6 @@
 package com.vuntech.parking.entrance.service.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import lombok.Data;
@@ -25,4 +26,6 @@ public class VehicleEntry {
 
 	    private Long durationInMinutes;
 	    // Getters and Setters
+	    
+	    private BigDecimal amountToPay;
 }

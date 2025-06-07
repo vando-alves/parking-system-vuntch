@@ -1,5 +1,7 @@
 package com.vuntech.parking.entrance.service.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -31,8 +33,25 @@ public class EntryService {
 
 	        long duration = Duration.between(entry.getEntryTime(), exitTime).toMinutes();
 	        entry.setDurationInMinutes(duration);
+	        
+	        BigDecimal amount = calculateAmount(duration);
+	        entry.setAmountToPay(amount);
 
 	        return repository.save(entry);
 	    }
 
+	    private BigDecimal calculateAmount(long durationInMinutes) {
+	        if (durationInMinutes <= 30) {
+	            return BigDecimal.valueOf(5.00);
+	        } else if (durationInMinutes <= 60) {
+	            return BigDecimal.valueOf(8.00);
+	        } else if (durationInMinutes <= 120) {
+	            return BigDecimal.valueOf(12.00);
+	        } else {
+	            long extraHours = (durationInMinutes - 120 + 59) / 60; // arredonda para cima
+	            BigDecimal extra = BigDecimal.valueOf(extraHours).multiply(BigDecimal.valueOf(2.00));
+	            return BigDecimal.valueOf(12.00).add(extra).setScale(2, RoundingMode.HALF_UP);
+	        }
+	    }
+	    
 }
